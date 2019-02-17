@@ -1,0 +1,16 @@
+#header {
+  background-color: #282c34;
+  min-height: 8vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vw;
+}
+
+#header #title {
+  font-size: calc(10px + 2vmin);
+  color: white;
+  flex-basis: content;
+  flex-grow: 1;
+}

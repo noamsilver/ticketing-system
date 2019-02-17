@@ -1,0 +1,27 @@
+#search-box {
+  display: inline-block;
+  position: relative;
+  padding: 5px;
+  text-align: center;
+  flex-grow: 10;
+}
+
+#search-box svg {
+  position: absolute;
+  top: 34%;
+  right: 11%;
+  cursor: pointer;
+}
+
+#search-box .search-input {
+  width: 80%;
+  padding: 5px;
+  border-radius: 8px;
+  font-size: calc(12px + 1vmin);;
+  outline: unset;
+}
+
+#search-box .search-imput::placeholder {
+  color: black;
+  opacity: 0.5;
+}

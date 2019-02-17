@@ -1,0 +1,6 @@
+.new-ticket-button {
+  flex-grow: 1;
+  margin-left: 4vh;
+  margin-right: 1.5vh;
+  font-size: calc(10px + 1vmin);
+}

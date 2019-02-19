@@ -1,15 +1,11 @@
 import types from '../types';
 
 export default {
-  newTicket: (id, ticket) => ({
-    type: types.NEW_TICKET,
-    payload: {
-      id,
-      ticket,
-    }
+  newTicketClick: () => ({
+    type: types.NEW_TICKET_CLICK,
   }),
-  updateTicket: (id, ticket) => ({
-    type: types.UPDATE_TICKET,
+  ticketUpeate: (id, ticket) => ({
+    type: types.TICKET_UPDATE,
     payload: {
       id,
       ticket,
@@ -19,11 +15,15 @@ export default {
     type: types.SEARCH_CHANGE,
     payload: text,
   }),
-  showTicketModule: ticket => ({
-    type: types.SHOW_TICKET_MODULE,
-    payload: ticket,
+  ticketModuleShowClick: id => ({
+    type: types.TICKET_MODULE_SHOW_CLICK,
+    payload: id,
   }),
-  hideTicketModule: () => ({
-    type: types.HIDE_TICKET_MODULE,
+  TicketModuleEditClick: id => ({
+    type: types.TICKET_MODULE_EDIT_CLICK,
+    payload: id,
+  }),
+  ticketModuleHideClick: () => ({
+    type: types.TICKET_MODULE_HIDE_CLICK,
   }),
 }

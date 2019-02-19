@@ -1,7 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import actions from '../../actions';
 
-const NewTicketButton = () => (
-  <button className='new-ticket-button'>New Ticket</button>
+const NewTicketButton = ({ onClick }) => (
+  <button
+    className='new-ticket-button'
+    onClick={onClick}
+  >New Ticket</button>
 );
 
-export default NewTicketButton;
+const mapDispatchToProps = dispatch => ({
+  onClick: () => dispatch(actions.newTicketClick()),
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(NewTicketButton);

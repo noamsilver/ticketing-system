@@ -1,0 +1,38 @@
+#ticket-edit {
+  width: 200px;
+  background-color: white;
+  margin: auto;
+  margin-top: 100px;
+  border: 2px solid black;
+  border-radius: 6px;
+  overflow-wrap: break-word;
+  padding: 15px;
+}
+
+#ticket-edit .icons {
+  padding-bottom: 15px;
+}
+
+#ticket-edit .icons svg {
+  cursor: pointer;
+}
+
+#ticket-edit .ticket-title {
+  font-size: 24px;
+}
+
+#ticket-edit .id {
+  font-size: 12px;
+}
+
+#ticket-edit .inputs {
+  text-align: start;
+}
+
+#ticket-edit .inputs input {
+  width: calc(100% - 5px);
+}
+
+#ticket-edit .error {
+  color: red;
+}

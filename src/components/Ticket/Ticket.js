@@ -13,27 +13,31 @@ const Ticket = ({ticket, isModule, show, edit, hide}) => (
       }
     }}
   >
-    {isModule && <X
-      width={15}
-      height={15}
-      onClick={() => {
-        if (isModule) {
-          hide();
-        }
-      }}
-    />} 
-    {isModule && <Edit
-      width={15}
-      height={15}
-      onClick={() => edit(ticket.id)}
-    />}
-    <div>{`ID: ${ticket.id}`}</div>
-    <div>{ticket.summary}</div>
-    {isModule && <div>{ticket.description}</div>}
-    {isModule && <div>{`Status: ${ticket.status}`}</div>}
-    {isModule && <div>{`Severity: ${ticket.severity}`}</div>}
-    {isModule && <div>{`Created On: ${new Date(ticket.created).toLocaleString()}`}</div>}
-    {isModule && <div>{`Last Updated: ${new Date(ticket.updated).toLocaleString()}`}</div>}
+    <div className='icons'>
+      {isModule && <X
+        width={15}
+        height={15}
+        onClick={() => {
+          if (isModule) {
+            hide();
+          }
+        }}
+      />} 
+      {isModule && <Edit
+        width={15}
+        height={15}
+        onClick={() => edit(ticket.id)}
+      />}
+    </div>
+    <div className='id'>{`ID: ${ticket.id}`}</div>
+    <div className='summary'>{ticket.summary}</div>
+    {isModule && <div className='description'>{ticket.description}</div>}
+    <div className='details'>
+      {isModule && <div className='status'>{`Status: ${ticket.status}`}</div>}
+      {isModule && <div className='severity'>{`Severity: ${ticket.severity}`}</div>}
+      {isModule && <div className='created'>{`Created On: ${new Date(ticket.created).toLocaleString()}`}</div>}
+      {isModule && <div className='updated'>{`Last Updated: ${new Date(ticket.updated).toLocaleString()}`}</div>}
+    </div>
   </div>
 );
 

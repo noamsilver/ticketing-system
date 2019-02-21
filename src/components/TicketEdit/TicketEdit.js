@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import uuid from 'node-uuid';
+import uuid from 'short-uuid';
 import actions from '../../actions';
 import { ReactComponent as X } from '../../assets/images/clear-x.svg';
+
+const short = uuid();
 
 const TicketEdit = ({ticket, fields, hide, save}) => {
   const [summary, setSummary] = useState(ticket ? ticket.summary : fields.summary);
@@ -11,49 +13,63 @@ const TicketEdit = ({ticket, fields, hide, save}) => {
   const [severity, setSeverity] = useState(ticket ? ticket.severity : fields.severity[0]);
   const [error, setError] = useState('');
   return (
-  <div className='ticket-edit'>
-    <X
-      width={15}
-      height={15}
-      onClick={() => {
-        hide();
-      }}
-    /> 
-    Edit Ticket
-    <div>{ticket ? `ID: ${ticket.id}`: 'New Ticket'}</div>
-    <input
-      type='text'
-      name='summary'
-      placeholder='Enter ticket summary'
-      value={summary} onChange={e => {
-        setError('');
-        setSummary(e.target.value);
-      }}
-    />
-    <input
-      type='text'
-      name='description'
-      placeholder='Enter ticket Description'
-      value={description}
-      onChange={e => {
-        setError('');
-        setDescription(e.target.value);
-      }}
-    />
-    <select
-      name='status'
-      value={status}
-      onChange={e => setStatus(e.target.value)}
-    >
-      {fields.status.map(statusValue => <option value={statusValue}>{statusValue}</option>)}
-    </select>
-    <select
-      name='severity'
-      value={severity}
-      onChange={e => setSeverity(e.target.value)}
-    >
-      {fields.severity.map(severityValue => <option value={severityValue}>{severityValue}</option>)}
-    </select>
+  <div id='ticket-edit'>
+    <div className='icons'>
+      <X
+        width={15}
+        height={15}
+        onClick={() => {
+          hide();
+        }}
+      /> 
+    </div>
+    {ticket ? <div className='ticket-title'>{'Edit Ticket'}</div> : ''}
+    {ticket ? <div className='id'>{`ID: ${ticket.id}`}</div>: <div className='ticket-title'>{'New Ticket'}</div>}
+    <div className='inputs'>
+      <div className='summary'>
+        <input
+          type='text'
+          name='summary'
+          placeholder='Enter summary'
+          value={summary} onChange={e => {
+            setError('');
+            setSummary(e.target.value);
+          }}
+        />
+      </div>
+      <div className='description'>
+        <input
+          type='text'
+          name='description'
+          placeholder='Enter description'
+          value={description}
+          onChange={e => {
+            setError('');
+            setDescription(e.target.value);
+          }}
+        />
+      </div>
+      <div className='status'>
+        <label>Status: </label>
+        <select
+          name='status'
+          value={status}
+          onChange={e => setStatus(e.target.value)}
+        >
+          {fields.status.map(statusValue => <option value={statusValue}>{statusValue}</option>)}
+        </select>
+      </div>
+      <div className='severity'>
+        <label>Severity: </label>
+        <select
+          name='severity'
+          value={severity}
+          onChange={e => setSeverity(e.target.value)}
+        >
+          {fields.severity.map(severityValue => <option value={severityValue}>{severityValue}</option>)}
+        </select>
+      </div>
+    </div>
     <button
       className='save-button'
       onClick={() =>{
@@ -71,7 +87,7 @@ const TicketEdit = ({ticket, fields, hide, save}) => {
               ...newTicket,
             })
           } else {
-            const id = uuid.v4();
+            const id = short.new();
             save(id, {
               ...newTicket,
               id,
@@ -79,7 +95,7 @@ const TicketEdit = ({ticket, fields, hide, save}) => {
             })
           }
         } else {
-          setError('Please enter ticket summary and description.')
+          setError('Please enter both a ticket summary and a description.')
         }
       }}
     >Save</button>

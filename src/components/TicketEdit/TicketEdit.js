@@ -82,13 +82,13 @@ const TicketEdit = ({ticket, fields, hide, save}) => {
             severity,
           }
           if (ticket) {
-            save(ticket.id, {
+            save({
               ...ticket,
               ...newTicket,
             })
           } else {
             const id = short.new();
-            save(id, {
+            save({
               ...newTicket,
               id,
               created: newTicket.updated,
@@ -109,7 +109,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   hide: () => dispatch(actions.ticketModuleHideClick()),
-  save: (id, ticket) => dispatch(actions.ticketUpeate(id, ticket)),
+  save: ticket => dispatch(actions.ticketUpeate(ticket)),
 });
 
 export default connect(

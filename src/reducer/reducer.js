@@ -10,7 +10,8 @@ const initialState = {
     description: '',
     status: ['Open', 'In Progress', 'Done'],
     severity: ['Low', 'Medium', 'High'],
-  }
+  },
+  toggleRerender: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,9 +25,10 @@ const reducer = (state = initialState, action) => {
     case types.TICKET_UPDATE:
       return {
         ...state,
-        tickets: state.tickets.set(action.payload.id, action.payload.ticket),
+        tickets: state.tickets.set(action.payload.id, action.payload),
         ticketModuleShow: null,
         ticketEdit: false,
+        toggleRerender: !state.toggleRerender,
       };
     case types.SEARCH_CHANGE:
       return {

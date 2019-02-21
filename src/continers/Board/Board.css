@@ -16,7 +16,8 @@
 }
 
 #boards .board-box {
-  width: 200px;
+  width: 220px;
+  padding-bottom: 10px;
 }
 
 #boards .board-box .title {

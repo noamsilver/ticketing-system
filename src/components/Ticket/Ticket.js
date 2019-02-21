@@ -12,6 +12,22 @@ const Ticket = ({ticket, isModule, show, edit, hide}) => (
         show(ticket.id);
       }
     }}
+    draggable
+    onDragStart={e => {
+      if (!isModule) {
+        e.dataTransfer.setData('application/json', JSON.stringify(ticket));
+        e.dataTransfer.setData('text/plain', JSON.stringify(ticket));
+        e.dataTransfer.effectAllowed = 'move';
+        e.target.style.borderWidth = '5px';
+        e.target.style.borderColor = 'rgba(255, 0, 0, 0.3)';
+      } else {
+        e.preventDefault();
+      }
+    }}
+    onDragEnd={e => {
+      e.target.style.borderWidth = '';
+      e.target.style.borderColor = 'black';
+    }}
   >
     <div className='icons'>
       {isModule && <X

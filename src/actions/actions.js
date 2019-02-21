@@ -4,12 +4,9 @@ export default {
   newTicketClick: () => ({
     type: types.NEW_TICKET_CLICK,
   }),
-  ticketUpeate: (id, ticket) => ({
+  ticketUpeate: ticket => ({
     type: types.TICKET_UPDATE,
-    payload: {
-      id,
-      ticket,
-    }
+    payload: ticket,
   }),
   searchChange: text => ({
     type: types.SEARCH_CHANGE,

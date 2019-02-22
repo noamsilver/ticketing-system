@@ -1,6 +1,9 @@
-.new-ticket-button {
+#new-ticket-button-container {
   flex-grow: 1;
-  margin-left: 4vh;
-  margin-right: 1.5vh;
+  padding: 0 5vw;
+}
+
+.new-ticket-button {
+  width: 100%;
   font-size: calc(10px + 1vmin);
 }

@@ -3,10 +3,14 @@ import { connect } from 'react-redux';
 import actions from '../../actions';
 
 const NewTicketButton = ({ onClick }) => (
-  <button
-    className='new-ticket-button'
-    onClick={onClick}
-  >New Ticket</button>
+  <div id='new-ticket-button-container'>
+    <button
+      className='new-ticket-button'
+      onClick={onClick}
+    >
+      New Ticket
+    </button>
+  </div>
 );
 
 const mapDispatchToProps = dispatch => ({

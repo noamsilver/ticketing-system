@@ -3,18 +3,18 @@
   position: relative;
   padding: 5px;
   text-align: center;
-  flex-grow: 10;
+  flex-grow: 1;
 }
 
 #search-box svg {
   position: absolute;
   top: 34%;
-  right: 11%;
+  right: 0;
   cursor: pointer;
 }
 
 #search-box .search-input {
-  width: 80%;
+  width: 100%;
   padding: 5px;
   border-radius: 8px;
   font-size: calc(12px + 1vmin);;

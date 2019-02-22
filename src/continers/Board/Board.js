@@ -7,7 +7,6 @@ import Ticket from '../../components/Ticket';
 const Board = ({tickets, ticketModuleShow, search, ticketUpdate}) => {
   let ticketsArray = Array.from(tickets.values());
   if (search !== '') {
-    console.log({search, ticketsArray, ticket: ticketsArray[0]})
     ticketsArray = ticketsArray.filter(ticket => 
       ticket.summary.includes(search) || ticket.description.includes(search)
     );
@@ -60,20 +59,16 @@ const Board = ({tickets, ticketModuleShow, search, ticketUpdate}) => {
 };
 
 const handleDragEnter = e => {
-  console.log('onDragEnter');
   e.preventDefault();
 }
 
 const handleDragOver = e => {
-  console.log('onDragOver');
   e.preventDefault();
 }
 
 const handleDrop = (e, status, ticketUpdate) => {
-  console.log('onDrop');
   e.preventDefault();
   const ticket = JSON.parse(e.dataTransfer.getData('application/json'));
-  console.log({ticket})
   ticketUpdate({
     ...ticket,
     status,

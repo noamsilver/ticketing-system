@@ -13,14 +13,15 @@ const TicketEdit = ({ticket, fields, hide, save}) => {
   const [severity, setSeverity] = useState(ticket ? ticket.severity : fields.severity[0]);
   const [error, setError] = useState('');
   return (
-  <div id='ticket-edit'>
+  <div
+    id='ticket-edit'
+    onClick={e => e.stopPropagation()}
+  >
     <div className='icons'>
       <X
         width={15}
         height={15}
-        onClick={() => {
-          hide();
-        }}
+        onClick={hide}
       /> 
     </div>
     {ticket ? <div className='ticket-title'>{'Edit Ticket'}</div> : ''}
@@ -56,7 +57,7 @@ const TicketEdit = ({ticket, fields, hide, save}) => {
           value={status}
           onChange={e => setStatus(e.target.value)}
         >
-          {fields.status.map(statusValue => <option value={statusValue}>{statusValue}</option>)}
+          {fields.status.map((statusValue, index) => <option key={index} value={statusValue}>{statusValue}</option>)}
         </select>
       </div>
       <div className='severity'>
@@ -66,7 +67,7 @@ const TicketEdit = ({ticket, fields, hide, save}) => {
           value={severity}
           onChange={e => setSeverity(e.target.value)}
         >
-          {fields.severity.map(severityValue => <option value={severityValue}>{severityValue}</option>)}
+          {fields.severity.map((severityValue, index) => <option key={index} value={severityValue}>{severityValue}</option>)}
         </select>
       </div>
     </div>

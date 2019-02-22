@@ -26,7 +26,7 @@ const Board = ({tickets, ticketModuleShow, search, ticketUpdate}) => {
         >
           <div className='title'>Open</div>
           {ticketsArray.filter(ticket => ticket.status === 'Open')
-            .map(ticket => <Ticket ticket={ticket} />)}
+            .map(ticket => <Ticket key={ticket.id} ticket={ticket} />)}
         </div>
         <div
           id='in-progress-board'
@@ -38,7 +38,7 @@ const Board = ({tickets, ticketModuleShow, search, ticketUpdate}) => {
         >
           <div className='title'>In Progress</div>
           {ticketsArray.filter(ticket => ticket.status === 'In Progress')
-            .map(ticket => <Ticket ticket={ticket} />)}
+            .map(ticket => <Ticket key={ticket.id} ticket={ticket} />)}
         </div>
         <div
           id='done-board'
@@ -50,7 +50,7 @@ const Board = ({tickets, ticketModuleShow, search, ticketUpdate}) => {
         >
           <div className='title'>Done</div>
           {ticketsArray.filter(ticket => ticket.status === 'Done')
-            .map(ticket => <Ticket ticket={ticket} />)
+            .map(ticket => <Ticket key={ticket.id} ticket={ticket} />)
             .reverse()}
         </div>
       </div>

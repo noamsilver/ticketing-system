@@ -7,9 +7,11 @@ import { ReactComponent as Edit } from '../../assets/images/pencil-edit-button.s
 const Ticket = ({ticket, isModule, show, edit, hide}) => (
   <div
     className={'ticket' + (isModule ? ' module-ticket' : ' board-ticket')}
-    onClick={() => {
+    onClick={e => {
       if (!isModule) {
         show(ticket.id);
+      } else {
+        e.stopPropagation();
       }
     }}
     draggable
@@ -33,11 +35,7 @@ const Ticket = ({ticket, isModule, show, edit, hide}) => (
       {isModule && <X
         width={15}
         height={15}
-        onClick={() => {
-          if (isModule) {
-            hide();
-          }
-        }}
+        onClick={hide}
       />} 
       {isModule && <Edit
         width={15}

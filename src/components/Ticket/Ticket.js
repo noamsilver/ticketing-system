@@ -6,7 +6,7 @@ import { ReactComponent as Edit } from '../../assets/images/pencil-edit-button.s
 
 const Ticket = ({ticket, isModule, show, edit, hide}) => (
   <div
-    className='ticket'
+    className={'ticket' + (isModule ? ' module-ticket' : ' board-ticket')}
     onClick={() => {
       if (!isModule) {
         show(ticket.id);

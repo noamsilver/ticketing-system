@@ -72,6 +72,7 @@ const handleDrop = (e, status, ticketUpdate) => {
   ticketUpdate({
     ...ticket,
     status,
+    updated: new Date().valueOf(),
   });
 }
 
